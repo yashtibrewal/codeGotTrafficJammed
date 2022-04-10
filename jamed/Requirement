@@ -1,0 +1,11 @@
+Every time we copy the testcases and then paste it as an input to our program.
+Problem:
+Check if my output is same as the expected output.
+Manual Checking is a pain. Automation is the key.
+CodeJam expects main function read write using Scanners and Sysouts.
+
+Posssible Solution:
+1. Keep 2 files. 1 as Input for testcases. One as expected output of the code.
+2. Keep Scanners in the main at the same time.
+3. Maintain 2 versions of the code, one which runs locally, other which we need to submit.
+4. WAP to check if 2 files are exactly the same.
