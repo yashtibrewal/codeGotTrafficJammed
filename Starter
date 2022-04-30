@@ -1,0 +1,24 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+class Solution {
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        int T = scanner.nextInt();
+        int counter = 1;
+        while (T-- > 0) {
+            int N = scanner.nextInt();
+            int K = scanner.nextInt();
+            int[] P = new int[N];
+            for(int j=0;j<N;j++){
+                P[j] = scanner.nextInt();
+            }
+            System.out.println("Case #"+counter+":");
+            counter++;
+        }
+    }
+
+}
