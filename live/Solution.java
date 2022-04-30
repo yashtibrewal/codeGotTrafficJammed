@@ -1,66 +1,44 @@
-import java.util.*;
-import java.io.*;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
-public class Solution {
+class Solution {
 
-    int d[];
-    int n;
-    int leftIndex;
-    int rightIndex;
-    int paidCustomers;
-    int max;
+    // returns the length of the integer
+    public static int length(int x){
+        String temp = x+"";
+        return temp.length();
+    }
 
-    Solution(int d[], int n){
-        this.d = d;
-        this.n = n;
-        leftIndex = 0;
-        rightIndex = n - 1;
-        paidCustomers = 0;
+    public static void multiplyByTen(int X[], int i){
+        X[i] = X[i]*10;
+    }
+
+    public static int solve(int X[], int N){
+        int counter = 0;
+        for(int i=0;i<N-1;i++){
+            if(X[i]>=X[i+1]){
+                while(X[i]>=X[i+1]){
+                    multiplyByTen(X,i+1);
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
     public static void main(String[] args) {
-        Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-        int t = in.nextInt(); // Scanner has functions to read ints, longs, strings, chars, etc.
-        for (int i = 1; i <= t; ++i) {
-            int n = in.nextInt();
-            int[] d = new int[n];
-            for(int j=0;j<n;j++){
-                d[j] = in.nextInt();
+
+        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        int T = scanner.nextInt();
+        int counter = 1;
+        while (T-- > 0) {
+            int N = scanner.nextInt();
+            int[] X = new int[N];
+            for(int j=0;j<N;j++){
+                X[j] = scanner.nextInt();
             }
-            Solution solution = new Solution(d,n);
-            solution.maxPaidCustomers();
-            System.out.println("Case #" + i + ": " + solution.paidCustomers);
+            System.out.println("Case #"+counter+":"+solve(X, N));
+            counter++;
         }
-    }
-
-    private void maxPaidCustomers() {
-        while(leftIndex<=rightIndex){
-            serve();
-        }
-    }
-
-
-    private void serve() {
-        if(d[leftIndex]<d[rightIndex]){
-            serveLeftIndex();
-        }else{
-            serveRightIndex();
-        }
-    }
-
-    private void serveLeftIndex(){
-        if(d[leftIndex]>=max){
-            max = d[leftIndex];
-            paidCustomers++;
-        }
-        leftIndex++;
-    }
-
-    private void serveRightIndex(){
-        if(d[rightIndex]>=max){
-            max = d[rightIndex];
-            paidCustomers++;
-        }
-        rightIndex--;
     }
 
 }
